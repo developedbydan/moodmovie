@@ -9,8 +9,6 @@ const App = () => {
   return (
     <Router>
       <div className="px-5 py-9 max-w-screen-lg">
-        {" "}
-        {/* Dodana klasa max-w-screen-lg */}
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
