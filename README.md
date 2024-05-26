@@ -26,8 +26,8 @@ Movie Mood is a user-friendly movie recommendation app designed to enhance your 
 
 ## Technologies Used
 
-React.js
-HTML
-Tailwind CSS
-JavaScript
-Axios (for API requests)
+React.js,
+HTML,
+Tailwind CSS,
+JavaScript,
+Axios (for API requests),
