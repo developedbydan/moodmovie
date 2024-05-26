@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <div>
-      <nav className="flex justify-center px-4 py-3 md:justify-between">
+      <nav className="flex justify-center px-4 py-9 md:justify-between">
         <h2 className="text-white font-bold text-2xl text-center ">
           Movie
           <span className="bg-gradient-to-br from-purple-500 via-pink-500 to-pink-700 inline-block text-transparent bg-clip-text">

@@ -8,7 +8,7 @@ import Nav from "./components/Nav";
 const App = () => {
   return (
     <Router>
-      <div className="px-5 py-9 max-w-screen-lg">
+      <div>
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
