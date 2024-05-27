@@ -5,12 +5,12 @@ const Nav = () => {
   return (
     <div>
       <nav className="flex justify-center px-4 py-9 md:justify-between">
-        <h2 className="text-white font-bold text-2xl text-center ">
+        <Link to={"/"} className="text-white font-bold text-2xl text-center ">
           Movie
           <span className="bg-gradient-to-br from-purple-500 via-pink-500 to-pink-700 inline-block text-transparent bg-clip-text">
             Mood
           </span>
-        </h2>
+        </Link>
 
         <div className="hidden md:flex space-x-4 items-center">
           <Link to="/" className="text-white font-medium">

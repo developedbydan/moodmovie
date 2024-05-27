@@ -13,7 +13,7 @@ const Home = () => {
           Discover the best movies to match your current mood
         </p>
         <Link
-          to="/finder"
+          to="/generate"
           className="text-white border-2 py-2 px-8 rounded-xl mt-7 inline-block"
         >
           Explore <span className="md:hidden">Now</span>
