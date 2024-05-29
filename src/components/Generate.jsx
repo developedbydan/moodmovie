@@ -7,7 +7,7 @@ const Generate = () => {
   const [movies, setMovies] = useState([]);
   const scrollRef = useRef(null);
 
-  const apiKey = import.meta.env.VITE_OMDB_API_KEY;
+  const apiKey = import.meta.env.VITE_RAPID_API_KEY;
 
   const getMovies = async (mood) => {
     let genre = "";
@@ -25,12 +25,29 @@ const Generate = () => {
         genre = "adventure";
         break;
     }
+
     if (genre !== "") {
+      const options = {
+        method: "GET",
+        url: "https://streaming-availability.p.rapidapi.com/shows/search/filters",
+        params: {
+          country: "us",
+          genres: genre,
+          series_granularity: "show",
+          order_by: "rating",
+          genres_relation: "and",
+          output_language: "en",
+          show_type: "movie",
+        },
+        headers: {
+          "X-RapidAPI-Key": apiKey,
+          "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+        },
+      };
+
       try {
-        const res = await axios.get(
-          `http://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=${genre}`
-        );
-        const movies = res.data.Search.slice(0, 4);
+        const res = await axios.request(options);
+        const movies = res.data.shows.slice(0, 4);
         setMovies(movies);
       } catch (err) {
         console.log("Error fetching movies: ", err);
@@ -63,10 +80,14 @@ const Generate = () => {
             </h2>
             <div className="grid grid-cols-2 gap-x-5 gap-y-8 pb-14 md:grid-cols-4 md:gap-10">
               {movies.map((movie) => (
-                <div key={movie.imdbID} className="flex flex-col items-center">
-                  <img src={movie.Poster} alt={movie.Title} className="w-36" />
+                <div key={movie.id} className="flex flex-col items-center">
+                  <img
+                    src={movie.imageSet.verticalPoster.w240}
+                    alt={movie.title}
+                    className="w-36 rounded-xl"
+                  />
                   <h3 className="text-white text-lg mt-2 pl-2">
-                    {movie.Title}
+                    {movie.title}
                   </h3>
                 </div>
               ))}
