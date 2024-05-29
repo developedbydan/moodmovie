@@ -47,8 +47,11 @@ const Generate = () => {
 
       try {
         const res = await axios.request(options);
-        const movies = res.data.shows.slice(0, 4);
-        setMovies(movies);
+        const allMovies = res.data.shows;
+        const radnomMovies = allMovies
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 4);
+        setMovies(radnomMovies);
       } catch (err) {
         console.log("Error fetching movies: ", err);
       }
@@ -61,7 +64,7 @@ const Generate = () => {
   };
 
   useEffect(() => {
-    if (scrollRef.current) {
+    if (scrollRef.current && movies.length == 4) {
       scrollRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
     }
   }, [movies]);
@@ -72,13 +75,13 @@ const Generate = () => {
         How are you feeling today?
       </h2>
       <Card handleMood={handleMood} />
-      <div className="mt-16" ref={scrollRef}>
+      <div className="mt-24" ref={scrollRef}>
         {movies && movies.length > 0 && (
           <>
             <h2 className="text-white text-2xl font-bold pr-12 mb-10">
               Found these gems tailored to your feelings
             </h2>
-            <div className="grid grid-cols-2 gap-x-5 gap-y-8 pb-14 md:grid-cols-4 md:gap-10">
+            <div className="grid grid-cols-2 gap-x-5 gap-y-8 pb-24 md:grid-cols-4 md:gap-10">
               {movies.map((movie) => (
                 <div key={movie.id} className="flex flex-col items-center">
                   <img
