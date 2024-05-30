@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Generate from "./components/Generate";
 import Nav from "./components/Nav";
+import Movie from "./components/Movie";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/generate" element={<Generate />} />
+          <Route path="/movie/:id" element={<Movie />} />
         </Routes>
       </div>
     </Router>

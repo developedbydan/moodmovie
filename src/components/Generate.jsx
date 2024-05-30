@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Card from "./Card";
 
@@ -83,7 +84,11 @@ const Generate = () => {
             </h2>
             <div className="grid grid-cols-2 gap-x-5 gap-y-8 pb-24 md:grid-cols-4 md:gap-10">
               {movies.map((movie) => (
-                <div key={movie.id} className="flex flex-col items-center">
+                <Link
+                  to={`/movie/${movie.id}`}
+                  key={movie.id}
+                  className="flex flex-col items-center"
+                >
                   <img
                     src={movie.imageSet.verticalPoster.w240}
                     alt={movie.title}
@@ -92,7 +97,7 @@ const Generate = () => {
                   <h3 className="text-white text-lg mt-2 pl-2">
                     {movie.title}
                   </h3>
-                </div>
+                </Link>
               ))}
             </div>
           </>
