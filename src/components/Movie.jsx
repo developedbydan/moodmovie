@@ -64,8 +64,20 @@ const Movie = () => {
                 </p>
               ))}
             </div>
-            <h3 className="text-xl font-bold mt-9 mb-4">About</h3>
-            <p>{movieInfo.overview}</p>
+            <div>
+              <h3 className="text-xl font-bold mt-9 mb-4">About</h3>
+              <p>{movieInfo.overview}</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mt-9 mb-4 ">Actors</h3>
+              <div className="flex gap-4 overflow-x-scroll no-scrollbar scroll-smooth ">
+                {movieInfo.cast.map((actor) => (
+                  <p className="bg-gray-900 px-3 py-2  rounded-lg text-sm mt-4  text-center">
+                    {actor}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       ) : (
