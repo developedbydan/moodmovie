@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Movie = () => {
@@ -40,8 +40,18 @@ const Movie = () => {
     }
   }, []);
 
+  // Streaming options filter
+  const getUniqueStreamingOptions = (streamingOptions) => {
+    const uniqueOptions = Array.from(
+      new Set(streamingOptions.map((option) => option.service.id))
+    ).map((id) => {
+      return streamingOptions.find((option) => option.service.id === id);
+    });
+    return uniqueOptions;
+  };
+
   return (
-    <div className="px-7 mt-4 text-white">
+    <div className="px-7 pb-14 mt-4 text-white">
       {movieInfo ? (
         <div>
           <img
@@ -69,13 +79,29 @@ const Movie = () => {
               <p>{movieInfo.overview}</p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mt-9 mb-4 ">Actors</h3>
+              <h3 className="text-xl font-bold mt-9 mb-5 ">Actors</h3>
               <div className="flex gap-4 overflow-x-scroll no-scrollbar scroll-smooth ">
-                {movieInfo.cast.map((actor) => (
-                  <p className="bg-gray-900 px-3 py-2  rounded-lg text-sm mt-4  text-center">
-                    {actor}
-                  </p>
+                {movieInfo.cast.map((actor, index) => (
+                  <div className="bg-pink-950 px-3 py-2 rounded-lg text-sm flex flex-col justify-center text-center">
+                    <p key={index}>{actor}</p>
+                  </div>
                 ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mt-9 mb-5 ">Stream on</h3>
+              <div className="flex gap-5 overflow-x-scroll no-scrollbar scroll-smooth">
+                {getUniqueStreamingOptions(movieInfo.streamingOptions.us).map(
+                  (option) => (
+                    <Link key={option.service.id} to={option.link}>
+                      <img
+                        src={option.service.imageSet.darkThemeImage}
+                        alt={option.service.name}
+                        className="h-12"
+                      />
+                    </Link>
+                  )
+                )}
               </div>
             </div>
           </div>
