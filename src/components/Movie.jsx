@@ -11,7 +11,6 @@ const Movie = () => {
   const getMovie = async () => {
     const options = {
       method: "GET",
-      method: "GET",
       url: `https://streaming-availability.p.rapidapi.com/shows/${id}`,
       params: {
         series_granularity: "show",
