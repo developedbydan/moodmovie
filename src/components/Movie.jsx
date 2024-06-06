@@ -53,42 +53,52 @@ const Movie = () => {
     <div className="px-7 pb-14 mt-4 text-white">
       {movieInfo ? (
         <div>
-          <img
-            src={movieInfo.imageSet.horizontalPoster.w480}
-            alt={movieInfo.title}
-            className="rounded-lg h-auto"
-          />
-          <div className="pl-1">
+          <div className="w-full min-h-48 max-h-[450px] overflow-hidden">
+            <img
+              src={movieInfo.imageSet.horizontalPoster.w1440}
+              alt={movieInfo.title}
+              className="rounded-lg object-contain w-full h-full"
+            />
+          </div>
+          <div className="pl-1 lg:mt-8">
             <div className="mt-3 flex gap-4 items-center">
-              <h2 className="text-2xl font-bold ">{movieInfo.title}</h2>
-              <h4>({movieInfo.releaseYear})</h4>
+              <h2 className="text-2xl font-bold xl:text-3xl ">
+                {movieInfo.title}
+              </h2>
+              <h4 className="xl:text-xl">({movieInfo.releaseYear})</h4>
             </div>
             <div className="flex gap-3 items-center">
               {movieInfo.genres.map((genre) => (
                 <p
                   key={genre.id}
-                  className="bg-gray-900 px-3 py-1 rounded-lg text-sm mt-4"
+                  className="bg-gray-900 px-3 py-1 lg:px-5 lg:py-2 rounded-lg text-sm mt-4 lg:mt-7 lg:text-base"
                 >
                   {genre.name}
                 </p>
               ))}
             </div>
             <div>
-              <h3 className="text-xl font-bold mt-9 mb-4">About</h3>
+              <h3 className="text-xl font-bold mt-9 mb-4 lg:mt-14 lg:text-2xl">
+                About
+              </h3>
               <p>{movieInfo.overview}</p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mt-9 mb-5 ">Actors</h3>
+              <h3 className="text-xl font-bold mt-9 mb-5 lg:mt-14 lg:text-2xl ">
+                Actors
+              </h3>
               <div className="flex gap-4 overflow-x-scroll no-scrollbar scroll-smooth ">
                 {movieInfo.cast.map((actor, index) => (
-                  <div className="bg-pink-950 px-3 py-2 rounded-lg text-sm flex flex-col justify-center text-center">
+                  <div className="bg-pink-950 px-3 py-2 lg:px-5 lg:py-2 rounded-lg text-sm lg:mt-7 lg:text-base flex flex-col justify-center text-center">
                     <p key={index}>{actor}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mt-9 mb-5 ">Stream on</h3>
+              <h3 className="text-xl font-bold mt-9 mb-5  lg:mt-14 lg:text-2xl ">
+                Stream on
+              </h3>
               <div className="flex gap-5 overflow-x-scroll no-scrollbar scroll-smooth">
                 {getUniqueStreamingOptions(movieInfo.streamingOptions.us).map(
                   (option) => (
