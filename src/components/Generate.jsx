@@ -79,20 +79,20 @@ const Generate = () => {
       <div className="mt-24" ref={scrollRef}>
         {movies && movies.length > 0 && (
           <>
-            <h2 className="text-white text-2xl font-bold pr-12 mb-10">
+            <h2 className="text-white text-2xl md:text-3xl font-bold pr-12 mb-10 ">
               Found these gems tailored to your feelings
             </h2>
-            <div className="grid grid-cols-2 gap-x-5 gap-y-8 pb-24 md:grid-cols-4 md:gap-10">
+            <div className="grid grid-cols-2 gap-x-5 gap-y-8 pb-24 md:grid-cols-2 md:gap-5 lg:grid-cols-4 lg:gap-1">
               {movies.map((movie) => (
                 <Link
                   to={`/movie/${movie.id}`}
                   key={movie.id}
-                  className="flex flex-col items-center"
+                  className="flex flex-col items-center md:mb-5"
                 >
                   <img
                     src={movie.imageSet.verticalPoster.w240}
                     alt={movie.title}
-                    className="w-36 rounded-xl"
+                    className="w-36 rounded-xl md:w-48  "
                   />
                   <h3 className="text-white text-lg mt-2 pl-2">
                     {movie.title}
