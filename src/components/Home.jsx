@@ -1,11 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import heroImage from "../assets/hero.png";
-import heroLarge from "../assets/hero_lg.png";
+import heroSM from "../assets/hero_sm.png";
+import heroMD from "../assets/hero_md.png";
+import heroLG from "../assets/hero_lg.png";
+import heroXL from "../assets/hero_xl.png";
+
+// heroSM 320px x 180px
+// heroMD 768px x 406px
+// heroLG 1024px x 538px
+// heroXL 1200px x 625px
 
 const Home = () => {
   return (
-    <div className=" pt-24">
+    <div className=" pt-24  flex flex-col justify-between min-h-screen-custom max-h-screen-custom overflow-y-hidden">
       <div className="px-7">
         <h1 className="text-white text-4xl font-bold line pr-28 sm:text-5xl">
           Find Your Perfect Movie Mood
@@ -20,12 +27,13 @@ const Home = () => {
           Explore <span className="md:hidden">Now</span>
         </Link>
       </div>
-      <div className="h-96 overflow-hidden   md:h-4/5 border border-white ">
-        <img src={heroImage} alt="movie-posters" className=" block md:hidden" />
+      <div className="h-[370px] lg:h-[500px] overflow-hidden">
         <img
-          src={heroLarge}
+          srcSet={`${heroSM} 320w, ${heroMD} 768w, ${heroLG} 1024w, ${heroXL} 1200w`}
+          sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1200px"
+          src={heroMD}
           alt="movie-posters"
-          className="hidden md:block object-cover w-full  "
+          className="object-cover h-full w-full sm:h-full md:h-auto lg:h-auto"
         />
       </div>
     </div>
