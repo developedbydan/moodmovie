@@ -16,4 +16,12 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .min-h-screen-custom {
+    min-height: calc(100vh - 105px); /* Oduzimamo visinu navigacije */
+  }
+
+  .max-h-screen-custom {
+    min-height: calc(100vh - 105px); /* Oduzimamo visinu navigacije */
+  }
 }
