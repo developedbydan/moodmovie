@@ -18,11 +18,6 @@ Movie Mood is a user-friendly movie recommendation app designed to enhance your 
 2. **Explore Recommendations**: Browse through the list of recommended movies that match your mood.
 3. **Enjoy Your Movie Night**: Sit back, relax, and enjoy your selected movie!
 
-## Installation
-
-1. Clone this repository to your local machine.
-2. Navigate to the project directory.
-3. Install dependencies using npm or yarn:
 
 ## Technologies Used
 
