@@ -25,4 +25,4 @@ React.js,
 HTML,
 Tailwind CSS,
 JavaScript,
-Axios (for API requests),
+Axios
