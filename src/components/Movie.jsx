@@ -35,7 +35,6 @@ const Movie = () => {
     if (!initialized.current) {
       initialized.current = true;
       getMovie();
-      console.log("pokrenuo se");
     }
   }, []);
 
